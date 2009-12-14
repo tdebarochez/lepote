@@ -5,7 +5,7 @@ this.listeners.push({'event': 'message.receive',
                        if (/^ping$/.exec(content)) {
 			 this.push(from, 'pong');
                        } else {
-                         this.push(from, 'command unknow : ' + content);
+                        // this.push(from, 'command unknow : ' + content);
                        }
                      }});
 this.listeners.push({'event': 'presence.receive',
