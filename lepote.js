@@ -1,5 +1,5 @@
 var xmpp = require('./lib/xmpp'),
-   posix = require('posix'),
+      fs = require('fs'),
      sys = require('sys');
 
 try {
@@ -11,7 +11,7 @@ try {
 }
 
 function loadPlugins () {
-  posix.readdir('./plugins/').addListener('success', function (files) {
+  fs.readdir('./plugins/').addListener('success', function (files) {
     for (var k = 0; k < files.length; ++k) {
       if (!(/\.js$/.exec(files[k]))) {
         continue;
