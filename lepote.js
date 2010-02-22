@@ -11,8 +11,12 @@ try {
 }
 
 function loadPlugins () {
-  fs.readdir('./plugins/').addListener('success', function (files) {
-    for (var k = 0; k < files.length; ++k) {
+  fs.readdir('./plugins/', function (err, files) {
+    if (err) {
+      sys.puts('[ warn ]  unable to load plugin directory');
+      return;
+    }
+    for (var k = 0, l = files.length; k < l; ++k) {
       if (!(/\.js$/.exec(files[k]))) {
         continue;
       }
@@ -23,7 +27,5 @@ function loadPlugins () {
       }
       sys.puts('[ load ] ' + filename + ' ' + plugin.listeners.length + ' listeners');
     }
-  }).addListener('error', function () {
-    sys.puts('[ warn ]  unable to load plugin directory');
   });
 }
