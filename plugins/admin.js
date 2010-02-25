@@ -10,6 +10,7 @@ this.listeners.push({'event': 'message.receive',
                      }});
 this.listeners.push({'event': 'presence.receive',
 		     'func' : function(from, to, status, priority) {
+		       return;
 		       this.push('admin@localhost',
 				 'receive presence from : ' + from
 			         + ' to : ' + to
@@ -17,6 +18,6 @@ this.listeners.push({'event': 'presence.receive',
 				 + ' priority : ' + priority);
                      }});
 this.listeners.push({'event': 'message.sent',
-		     'func' : function(to, msg) {
-		       sys.puts('[ send ] ' + to + ': ' + msg);
+                     'func' : function(to, msg) {
+                       sys.puts('[ send ] ' + to + ': ' + msg);
                      }});
