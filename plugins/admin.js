@@ -13,7 +13,7 @@ this.listeners.push({'event': 'presence.receive',
 		       return;
 		       this.push('admin@localhost',
 				 'receive presence from : ' + from
-			         + ' to : ' + to
+				 + ' to : ' + to
 				 + ' status : ' + status
 				 + ' priority : ' + priority);
                      }});
