@@ -1,10 +1,6 @@
 var sys = require('sys'),
     http = require("http");
 this.listeners = [];
-this.listeners.push({'event': 'html.message.receive',
-		     'func' : function (from, content, to, type, id) {
-		       this.pushHtml(from, '<strong>blah</strong>');
-		     }});
 this.listeners.push({'event': 'message.receive',
 		     'func' : function(from, content, to, type, id) {
 		       var that = this;
