@@ -14,9 +14,8 @@ this.listeners.push({'event': 'message.receive',
 			   response.addListener("data", function (chunk) {
 			     buffer += chunk.replace("\r", "");
 			   });
-			    response.addListener("end", function () {
-			    sys.puts(buffer);
-			      var definition = /\<p\>\<li\>([^\<]+)\<br\>\<a href="\/url\?q=(http:\/\/en.wikipedia.org\/wiki\/[^&]+)&/.exec(buffer);
+			   response.addListener("end", function () {
+			     var definition = /\<p\>\<li\>([^\<]+)\<br\>\<a href="\/url\?q=(http:\/\/en.wikipedia.org\/wiki\/[^&]+)&/.exec(buffer);
 			     if (definition !== null) {
 			       that.push(from, definition[1]+' '+definition[2]);
 			     } else {
