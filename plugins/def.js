@@ -7,7 +7,8 @@ this.listeners.push({'event': 'message.receive',
 		       var res = /^def\s(.+)$/.exec(content);
                        if (res !== null) {
 			 var google = http.createClient(80, "www.google.com");
-			 var request = google.request("GET", "/search?q=define:"+res[1], {"host": "www.google.com"});
+			 var query = "/search?"+require('querystring').stringify({q: 'define:'+res[1]});
+			 var request = google.request("GET", query, {"host": "www.google.com"});
 			 request.addListener('response', function (response) {
 			   response.setBodyEncoding("utf8");
 			   var buffer = '';
@@ -15,7 +16,7 @@ this.listeners.push({'event': 'message.receive',
 			     buffer += chunk.replace("\r", "");
 			   });
 			   response.addListener("end", function () {
-			     var definition = /\<p\>\<li\>([^\<]+)\<br\>\<a href="\/url\?q=(http:\/\/en.wikipedia.org\/wiki\/[^&]+)&/.exec(buffer);
+			     var definition = /\<li\>([^\<]+)\<br\>\<a href="\/url\?q=(http:\/\/en.wikipedia.org\/wiki\/[^&]+)&/.exec(buffer);
 			     if (definition !== null) {
 			       that.push(from, definition[1]+' '+definition[2]);
 			     } else {
