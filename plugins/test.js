@@ -8,6 +8,9 @@ exports.events = [function() {
      }
   });
   this.addListener('presence.receive', function(from, to, status, priority) {
+    if (type == 'subscribe') {
+      this.subscribe(from);
+    }
     return;
     this.push('admin@localhost', 'receive presence from : ' + from
                                  + ' to : ' + to
