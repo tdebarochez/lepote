@@ -21,11 +21,10 @@ function loadPlugins () {
         continue;
       }
       var filename = './plugins/' + files[k];
-      var plugin = require(filename.replace(/(\.js)$/, ''));
-      for (var j = 0; j < plugin.listeners.length; ++j) {
-	lepote.addListener(plugin.listeners[j].event, plugin.listeners[j].func);
-      }
-      sys.puts('[ load ] ' + filename + ' ' + plugin.listeners.length + ' listeners');
+      require(filename.replace(/(\.js)$/, '')).events.forEach(function (func) {
+        func.apply(lepote);
+      });
+      sys.puts('[ load ] ' + filename);
     }
   });
 }
