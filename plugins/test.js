@@ -1,5 +1,6 @@
 var sys = require('sys');
 exports.events = [function() {
+  var jid = this.jid;
   this.addListener('message.receive', function(from, content, to, type, id) {
     if (/^ping$/.exec(content)) {
       this.push(from, 'pong');
@@ -7,8 +8,8 @@ exports.events = [function() {
        // this.push(from, 'command unknow : ' + content);
      }
   });
-  this.addListener('presence.receive', function(from, to, status, priority) {
-    if (type == 'subscribe') {
+  this.addListener('presence.receive', function(from, to, status, priority, type) {
+    if (type == 'subscribe' && to != jid) {
       this.subscribe(from);
     }
     return;
