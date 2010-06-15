@@ -7,7 +7,7 @@ try {
   lepote.addListener('resources.binded', loadPlugins);
 
 } catch (e) {
-  process.stdio.writeError(e + "\n");
+  sys.puts(e + "\n");
 }
 
 function loadPlugins () {

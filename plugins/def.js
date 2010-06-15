@@ -9,7 +9,7 @@ exports.events = [function() {
       var query = "/search?"+require('querystring').stringify({q: 'define:'+res[1]});
       var request = google.request("GET", query, {"host": "www.google.com"});
       request.addListener('response', function (response) {
-	response.setBodyEncoding("utf8");
+	response.setEncoding("utf8");
 	var buffer = '';
 	response.addListener("data", function (chunk) {
 	  buffer += chunk.replace("\r", "");
@@ -23,7 +23,7 @@ exports.events = [function() {
 	  }
 	});
       });
-      request.close();
+      request.end();
     }
   });
 }];

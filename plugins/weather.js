@@ -9,7 +9,7 @@ exports.events = [function() {
       var query = "/ig/api?"+require('querystring').stringify({weather: res[1], hl: 'en'});
       var request = google.request("GET", query, {"host": "www.google.com"});
       request.addListener('response', function (response) {
-	response.setBodyEncoding("utf8");
+	response.setEncoding("utf8");
 	var buffer = '';
 	response.addListener("data", function (chunk) {
 	  buffer += chunk;
@@ -19,7 +19,7 @@ exports.events = [function() {
 	that.push(from, condition[1] + ', ' + condition[2] + 'C, ' + condition[3]);
 	  });
 	});
-      request.close();
+      request.end();
     }
   });
 }];
