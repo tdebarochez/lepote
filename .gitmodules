@@ -1,0 +1,3 @@
+[submodule "deps/node-base64.js"]
+	path = deps/node-base64.js
+	url = git@github.com:tdebarochez/node-base64.js.git

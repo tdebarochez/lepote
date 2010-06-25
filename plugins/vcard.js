@@ -1,4 +1,6 @@
-var sys = require('sys');
+var sys = require('sys'),
+    fs  = require('fs'),
+    base64 = require('../deps/node-base64.js/base64');
 exports.events = [function() {
   var jid = this.jid;
   this.addListener('message.receive', function(from, content, to, type, id) {
@@ -7,10 +9,9 @@ exports.events = [function() {
       var that = this;
       this.getVCard(res[1], function (vcardNode) {
 	vcardNode.children.forEach(function (node) {
-	  if (node.name != 'FN') {
-	    return;
+	  if (node.name == 'FN') {
+            that.push(from, 'Name: ' + node.nodeValue);
 	  }
-	  that.push(from, 'Name: ' + node.nodeValue);
 	});
       });
     }
