@@ -7,4 +7,4 @@ For more informations, please visit :
 License
 =======
 
-lepote is is licensed under the terms of the MIT License, see the included LICENSE file.
+lepote is licensed under the terms of the MIT License, see the included LICENSE file.
