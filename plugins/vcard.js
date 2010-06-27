@@ -4,10 +4,10 @@ var sys = require('sys'),
 exports.events = [function() {
   var jid = this.jid;
   this.addListener('message.receive', function(from, content, to, type, id) {
-    var res;
-    if ((res = /^vcard\s+(.*)$/.exec(content))) {
-      var that = this;
-      this.getVCard(res[1], function (vcardNode) {
+    if (/^vcard$/.test(content)) {
+      var that = this, res = content.split(' '),
+      jid = res.length > 1 ? res[1] : from;
+      this.getVCard(jid, function (vcardNode) {
 	vcardNode.children.forEach(function (node) {
 	  if (node.name == 'FN') {
             that.push(from, 'Name: ' + node.nodeValue);

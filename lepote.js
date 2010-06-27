@@ -1,30 +1,9 @@
 var xmpp = require('./lib/xmpp'),
-      fs = require('fs'),
-     sys = require('sys');
+ plugins = require('./plugins');
 
 try {
   var lepote = new xmpp.Client();
-  lepote.addListener('resources.binded', loadPlugins);
-
+  lepote.addListener('resources.binded', plugins.load);
 } catch (e) {
-  sys.puts(e + "\n");
-}
-
-function loadPlugins () {
-  fs.readdir('./plugins/', function (err, files) {
-    if (err) {
-      sys.puts('[ warn ]  unable to load plugin directory');
-      return;
-    }
-    for (var k = 0, l = files.length; k < l; ++k) {
-      if (!(/\.js$/.exec(files[k]))) {
-        continue;
-      }
-      var filename = './plugins/' + files[k];
-      require(filename.replace(/(\.js)$/, '')).events.forEach(function (func) {
-        func.apply(lepote);
-      });
-      sys.puts('[ load ] ' + filename);
-    }
-  });
+  require('sys').puts(e + "\n");
 }
