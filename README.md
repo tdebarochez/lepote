@@ -8,17 +8,14 @@ About
 
 LePote is an instant messaging bot and beginnings of a library for [NodeJS](http://nodejs.org) that implements the basics of xmpp protocol
 
-For more informations, please visit :
-[github repo](http://wiki.github.com/tdebarochez/lepote)
-
 Usage
 -----
 
     $ node lepote.js
 
-You can put your events directly in the `plugins/` subdirectory and look in the test.js example the usage or look at the [Plugins section](plugins/index.html) in documentation.
+You can put your events directly in the `plugins/` subdirectory and look at usage in the test.js example or look at the [Plugins section](plugins/index.html) in documentation.
 
-Grabe the code
+Grab the code
 --------------
 
 Check out source with
