@@ -19,7 +19,7 @@ http.createServer(function(request, response) {
         authors.push(commit.author.name);
       }
     });
-    that.push('thomas.barochez@gmail.com', params.commits.length + ' commits has just been pushed on ' + params.repository.name + ' repository by : ' + authors.join(', '));
+    that.push('john.doe@example.com', params.commits.length + ' commits has just been pushed on ' + params.repository.name + ' repository by : ' + authors.join(', '));
   });
 }).listen(8123);
 
