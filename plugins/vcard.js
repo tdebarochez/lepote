@@ -1,6 +1,5 @@
 var sys = require('sys'),
-    fs  = require('fs'),
-    base64 = require('../deps/node-base64.js/base64');
+    fs  = require('fs');
 exports.events = [function() {
   var jid = this.jid;
   this.addListener('message.receive', function(from, content, to, type, id) {
