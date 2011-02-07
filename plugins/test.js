@@ -1,7 +1,7 @@
-var sys = require('sys');
+var sys = require('util');
 exports.events = [function() {
   var jid = this.jid;
-  this.addListener('message.receive', function(from, content, to, type, id) {
+  this.addListener('message.receive', function(from, content) {
     if (/^ping$/.exec(content)) {
       this.push(from, 'pong');
     } else {

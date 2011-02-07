@@ -1,5 +1,5 @@
 var http = require('http'),
-    sys = require('sys'),
+    sys = require('util'),
     querystring = require('querystring');
 
 var that;
@@ -11,7 +11,7 @@ http.createServer(function(request, response) {
   request.addListener('end', function() {
     var params = JSON.parse(querystring.parse(body).payload);
     response.writeHead(200, {"content-length":"message",
-			     "content-type":"text/plain"});
+			                       "content-type":"text/plain"});
     response.end('thx !');
     var authors = [];
     params.commits.forEach(function (commit) {
