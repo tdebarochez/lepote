@@ -20,20 +20,18 @@ Grab the code
 Check out source with
 
     $ git clone git://github.com/tdebarochez/lepote.git
-    $ git submodule init
-    $ git submodule update
 
 Usage
 -----
 
     $ node lepote.js
 
-You can put your events directly in the `plugins/` subdirectory and look at usage in the test.js example or look at the [Plugins section](http://88.191.75.75/doc-lepote/plugins/index.html) in documentation.
+You can put your events directly in the `plugins/` subdirectory and look at usage in the test.js example or look at the [Plugins section](http://tdebarochez.github.com/lepote/plugins/) in documentation.
 
 Documentation
 -------------
 
-Take a look at `doc/` directory or read [online doc](http://88.191.75.75/doc-lepote/index.html)
+Take a look at [online doc](http://tdebarochez.github.com/lepote/)
 
 License
 -------
