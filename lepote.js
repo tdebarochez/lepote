@@ -1,5 +1,9 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\nApp (lepote) is running on Node.JS ' + process.version);
-}).listen(process.env['app_port'] || 3000);
+var xmpp = require('./lib/xmpp'),
+ plugins = require('./plugins');
+
+try {
+  var lepote = new xmpp.Client();
+  lepote.addListener('resources.binded', plugins.load);
+} catch (e) {
+  require('sys').puts(e + "\n");
+}
