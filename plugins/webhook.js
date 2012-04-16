@@ -23,4 +23,5 @@ http.createServer(function(request, response) {
   });
 }).listen(8123);
 
-exports.events = [function() { that = this; }];
+//exports.events = [function() { that = this; }];
+exports.events = [];
