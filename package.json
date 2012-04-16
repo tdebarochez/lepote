@@ -1,5 +1,8 @@
 {
   "name":"lepote",
   "node":"0.6.12",
-  "author":"tdebarochez"
+  "author":"tdebarochez",
+  "dependencies": {
+    "libxmljs": "0.5.4"
+  }
 }
