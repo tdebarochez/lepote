@@ -2,6 +2,7 @@ var xmpp = require('./lib/xmpp')
   , plugins = require('./plugins')
   , http = require('http')
   , url = require('url')
+  , querystring = require('querystring')
   , bot = null;
 
 try {
@@ -34,6 +35,32 @@ try {
         }
         else {
           res.end('bot running');
+        }
+        break;
+      case 'webhook':
+        if (bot !== null) {
+          var body = '';
+          req.addListener('data', function(chunk) {
+            body = body + chunk;
+          });
+          req.addListener('end', function() {
+            res.end('thx !');
+            try {
+              var params = JSON.parse(querystring.parse(body).payload);
+            }
+            catch (e) {
+              console.error(querystring.parse(body));
+              console.error(e);
+              return;
+            }
+            var authors = [];
+            params.commits.forEach(function (commit) {
+              if (authors.join().indexOf(commit.author.name) == -1) {
+                authors.push(commit.author.name);
+              }
+            });
+            bot.push('thomas.barochez@gmail.com', params.commits.length + ' commits has just been pushed on ' + params.repository.name + ' repository by : ' + authors.join(', '));
+          });
         }
         break;
       default:
