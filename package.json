@@ -1,8 +1,10 @@
 {
   "name":"lepote",
+  "version":"0.1.0",
   "node":"0.6.12",
   "author":"tdebarochez",
   "dependencies": {
-    "libxmljs": "0.5.4"
+    "libxmljs": "0.5.4",
+    "rssee": "*"
   }
 }
