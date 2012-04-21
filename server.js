@@ -59,7 +59,7 @@ try {
                 authors.push(commit.author.name);
               }
             });
-            bot.push('thomas.barochez@gmail.com', params.commits.length + ' commits has just been pushed on ' + params.repository.name + ' repository by : ' + authors.join(', '));
+            bot.push('thomas.barochez@gmail.com', params.commits.length + ' commits has just been pushed on ' + params.repository.name + '/' + params.ref + ' repository by : ' + authors.join(', '));
           });
         }
         break;
