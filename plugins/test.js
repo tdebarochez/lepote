@@ -4,7 +4,8 @@ exports.events = [function() {
   this.addListener('message.receive', function(from, content) {
     if (/^ping$/.exec(content)) {
       this.push(from, 'pong');
-    } else {
+    }
+    else {
        // this.push(from, 'command unknow : ' + content);
      }
   });
@@ -15,8 +16,8 @@ exports.events = [function() {
     return;
     this.push('admin@localhost', 'receive presence from : ' + from
                                  + ' to : ' + to
-				 + ' status : ' + status
-				 + ' priority : ' + priority);
+                                 + ' status : ' + status
+                                 + ' priority : ' + priority);
   });
   this.addListener('message.sent', function(to, msg) {
     sys.puts('[ send ] ' + to + ': ' + msg);
