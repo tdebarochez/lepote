@@ -2,6 +2,9 @@ var rss_observer = require('rssee')
   , sys = require('util');
 exports.events = [function() {
   this.addListener('message.receive', function(from, content) {
+    if (content.substr(0, 4) === 'help') {
+      return this.push(from, 'rss <stream_url> : send message when a new article appears on RSS stream.');
+    }
     var res = /^rss\s(.+)$/.exec(content);
     if (res === null) {
       return;

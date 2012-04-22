@@ -1,7 +1,10 @@
-var sys = require('util'),
-   http = require("http");
+var sys = require('util')
+  , http = require("http");
 exports.events = [function() {
   this.addListener('message.receive', function(from, content) {
+    if (content.substr(0, 4) === 'help') {
+      return this.push(from, 'def <word> : give you the <word>\'s definition.');
+    }
     var that = this;
     var res = /^def\s(.+)$/.exec(content);
     if (res !== null) {
