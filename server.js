@@ -6,8 +6,6 @@ var xmpp = require('./lib/xmpp')
   , vm = require('vm')
   , bot = null;
 
-console.log(fs.readdirSync('.'));
-console.log(process.cwd());
 try {
 
   app.configure('development', function(){
@@ -28,7 +26,7 @@ try {
 
   global.app = app;
   var dir = 'webserver_plugins';
-  fs.readdirSync(dir).forEach(function(file){
+  fs.readdirSync(path.join(__dirname, dir)).forEach(function(file){
     if (/\.js$/.exec(file) === false) {
       return;
     }
