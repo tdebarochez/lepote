@@ -1,7 +1,7 @@
 {
   "name":"lepote",
   "version":"0.2.0",
-  "node":"0.8.6",
+  "node":"0.8.1",
   "author":"tdebarochez",
   "main":"./lepote.js",
   "dependencies": {
