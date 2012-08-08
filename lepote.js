@@ -1,12 +1,46 @@
 var xmpp = require('./lib/xmpp')
-  , plugins = require('./plugins');
+  , path = require('path')
+  , vm = require('vm')
+  , fs = require('fs');
 
-try {
+function run (conf) {
+  var lepote = new xmpp.Client(conf);
 
-  var lepote = new xmpp.Client();
-  lepote.addListener('resources.binded', plugins.load);
-
+  lepote.on('ready', function () {
+    setTimeout(function () {
+      fs.readFile('opts/bender.vcard.xml', function (err, content) {
+        if (err) throw err;
+        return;
+        lepote.setVcard(content);
+        lepote.setStatus('chat', 'ready to chat', 25, '4bd204bc354262b758d81ff803ebcb8b91674806'); // sha1 of opts/avatar.png
+      })
+    }, 2000);
+  });
+  return lepote;
 }
-catch (e) {
-  require('sys').puts(e + "\n");
+
+function plugins (lepote) {
+  global.lepote = lepote;
+  var dir = 'plugins';
+  var plugins = [];
+  fs.readdirSync(dir).forEach(function(file){
+    if (false === /\.js$/.exec(file)) {
+      return;
+    }
+    var filename = path.join(dir, file);
+    require('./' + filename);
+    console.log('[ load ] ' + filename);
+    plugins.push(file);
+  });
+  return plugins;
 }
+
+if (null === module.parent) {
+  var lepote = run();
+  lepote.on('ready', function () {
+    plugins(lepote);
+  });
+}
+
+exports.run = run;
+exports.plugins = plugins;

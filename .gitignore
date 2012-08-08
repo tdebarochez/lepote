@@ -1,2 +1,4 @@
 .nodester.appconfig
 node_modules/
+rss_cache.json
+tmp/

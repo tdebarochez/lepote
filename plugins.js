@@ -1,5 +1,4 @@
-var sys = require('util'),
-    fs  = require('fs');
+var fs  = require('fs');
 
 /**
  * == Plugins ==
@@ -25,26 +24,19 @@ var sys = require('util'),
  * Load plugins
  **/
 
-
-function load (dir) {
-  dir = dir || './plugins/';
-  var lepote = this;
-  fs.readdir(dir, function (err, files) {
-    if (err) {
-      sys.puts('[ warn ]  unable to load plugin directory');
-      return;
+require('./lepote');
+fs.readdir(dir, function (err, files) {
+  if (err) {
+    console.warn('[ warn ] unable to load plugin directory');
+    return;
+  }
+  lepote.setMaxListeners(files.length * 2 + 10);
+  for (var k = 0, l = files.length; k < l; ++k) {
+    if (!(/\.js$/.exec(files[k]))) {
+      continue;
     }
-    for (var k = 0, l = files.length; k < l; ++k) {
-      if (!(/\.js$/.exec(files[k]))) {
-        continue;
-      }
-      var filename = dir + files[k];
-      require(filename.replace(/(\.js)$/, '')).events.forEach(function (func) {
-        func.apply(lepote);
-      });
-      sys.puts('[ load ] ' + filename);
-    }
-  });
-}
-
-exports.load = load;
+    var filename = dir + files[k];
+    require(filename.replace(/(\.js)$/, ''));
+    console.log('[ load ] ' + filename);
+  }
+});

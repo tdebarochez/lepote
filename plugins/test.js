@@ -1,25 +1,22 @@
-var sys = require('util');
-exports.events = [function() {
-  var jid = this.jid;
-  this.addListener('message.receive', function(from, content) {
-    if (/^ping$/.exec(content)) {
-      this.push(from, 'pong');
-    }
-    else {
-       // this.push(from, 'command unknow : ' + content);
-     }
-  });
-  this.addListener('presence.receive', function(from, to, status, priority, type) {
-    if (type == 'subscribe' && to != jid) {
-      this.subscribe(from);
-    }
-    return;
-    this.push('admin@localhost', 'receive presence from : ' + from
-                                 + ' to : ' + to
-                                 + ' status : ' + status
-                                 + ' priority : ' + priority);
-  });
-  this.addListener('message.sent', function(to, msg) {
-    sys.puts('[ send ] ' + to + ': ' + msg);
-  });
-}];
+
+lepote.on('message', function(from, content) {
+  if (/^ping$/.exec(content)) {
+    this.push(from, 'pong');
+  }
+});
+
+lepote.on('presence', function(from, to, status, priority, type) {
+  if (type == 'subscribe' && to != this.jid) {
+    this.subscribe(from);
+  }
+  if (typeof this.admin_jid !== "undefined") {
+    this.push(this.admin_jid, 'receive presence from : ' + from
+                            + ' to : ' + to
+                            + ' status : ' + status
+                            + ' priority : ' + priority);
+  }
+});
+
+lepote.on('message.sent', function(to, msg) {
+  console.log('[ send ] ' + to + ': ' + msg);
+});
