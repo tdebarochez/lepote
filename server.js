@@ -6,6 +6,8 @@ var xmpp = require('./lib/xmpp')
   , vm = require('vm')
   , bot = null;
 
+console.log(fs.readdirSync(dir));
+console.log(process.cwd());
 try {
 
   app.configure('development', function(){
