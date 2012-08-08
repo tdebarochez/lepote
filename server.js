@@ -1,6 +1,6 @@
 var xmpp = require('./lib/xmpp')
   , express = require('express')
-  , app = express.createServer()
+  , app = express()
   , fs = require('fs')
   , path = require('path')
   , vm = require('vm')
