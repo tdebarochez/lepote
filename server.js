@@ -37,8 +37,6 @@ try {
   app.listen(process.env['app_port'] || 3000);
 
   console.log('server started in ' + app.get('env') + ' mode');
-  console.log(process.env);
-  console.log(app);
 
 }
 catch (e) {
