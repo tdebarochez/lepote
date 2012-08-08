@@ -70,7 +70,8 @@ lepote.on('message', function(from, content) {
   }
   return this.push(from, urls.join('\n'));
 });
-
+/*
 setInterval(function () {
   fs.writeFileSync(path.join(__dirname, cache_file), JSON.stringify(cache));
 }, 60000);
+*/
