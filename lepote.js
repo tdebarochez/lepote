@@ -1,6 +1,6 @@
 var xmpp = require('./lib/xmpp')
   , path = require('path')
-  , vm = require('vm')
+  , path = require('path')
   , fs = require('fs');
 
 function run (conf) {
@@ -8,7 +8,7 @@ function run (conf) {
 
   lepote.on('ready', function () {
     setTimeout(function () {
-      fs.readFile('opts/bender.vcard.xml', function (err, content) {
+      fs.readFile(path.join(__dirname, 'opts', 'bender.vcard.xml'), function (err, content) {
         if (err) throw err;
         return;
         lepote.setVcard(content);
@@ -23,7 +23,7 @@ function plugins (lepote) {
   global.lepote = lepote;
   var dir = 'plugins';
   var plugins = [];
-  fs.readdirSync(dir).forEach(function(file){
+  fs.readdirSync(path.join(__dirname, dir)).forEach(function(file){
     if (false === /\.js$/.exec(file)) {
       return;
     }

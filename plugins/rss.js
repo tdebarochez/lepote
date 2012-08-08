@@ -2,8 +2,9 @@ var FeedListener = require('../lib/feedlistener')
   , listener = new FeedListener({'interval': 3600000,
                                  "skip_first": true})
   , fs = require('fs')
+  , path = require('path')
   , cache_file = './rss_cache.json'
-  , cache = fs.existsSync(cache_file) ? require('.' + cache_file) : {};
+  , cache = fs.existsSync(path.join(__dirname, cache_file)) ? require('.' + cache_file) : {};
 
 var push = function(item, from, url) {
   if (cache[from][url] < +item.pubDate) {
@@ -71,5 +72,5 @@ lepote.on('message', function(from, content) {
 });
 
 setInterval(function () {
-  fs.writeFileSync(cache_file, JSON.stringify(cache));
+  fs.writeFileSync(path.join(__dirname, cache_file), JSON.stringify(cache));
 }, 60000);

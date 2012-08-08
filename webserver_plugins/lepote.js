@@ -1,6 +1,5 @@
 var path = require('path')
   , fs = require('fs')
-  , vm = require('vm')
   , xmpp = require('../lib/xmpp')
   , lepote = require('../lepote')
   , bot = null;
