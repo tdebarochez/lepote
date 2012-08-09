@@ -1,11 +1,13 @@
 {
   "name":"lepote",
+  "url" : "http://tdebarochez.github.com/lepote",
   "version":"0.2.0",
   "node":"0.8.1",
   "author":"tdebarochez",
   "main":"./lepote.js",
   "dependencies": {
     "express": "3.x.x",
-    "sax": "0.4.2"
+    "jacasr": "0.1.0",
+    "feedlistener": "0.1.0"
   }
 }

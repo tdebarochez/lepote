@@ -1,4 +1,4 @@
-var FeedListener = require('../lib/feedlistener')
+var FeedListener = require('feedlistener')
   , listener = new FeedListener({'interval': 3600000,
                                  "skip_first": true})
   , fs = require('fs')

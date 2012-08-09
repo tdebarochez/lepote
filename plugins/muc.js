@@ -1,4 +1,6 @@
 
+var xmpp = require('jacasr');
+
 lepote.on('message', function(from, content, to, type) {
   if (from !== this.admin_jid) {
     return;

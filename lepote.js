@@ -1,4 +1,4 @@
-var xmpp = require('./lib/xmpp')
+var xmpp = require('jacasr')
   , path = require('path')
   , path = require('path')
   , fs = require('fs');
