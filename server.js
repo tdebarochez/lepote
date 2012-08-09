@@ -1,10 +1,9 @@
-var xmpp = require('./lib/xmpp')
+var xmpp = require('jacasr')
   , express = require('express')
   , app = express()
   , fs = require('fs')
   , path = require('path')
-  , vm = require('vm')
-  , bot = null;
+  , vm = require('vm');
 
 try {
 
