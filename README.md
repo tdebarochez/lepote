@@ -6,13 +6,13 @@ About
 
 #### XMPP bot for NodeJS ####
 
-LePote is an instant messaging bot and beginnings of a library for [NodeJS](http://nodejs.org) that implements the basics of xmpp protocol
+LePote is an instant messaging bot build on top of [jacasr library](http://github.com/tdebarochez/jacasr).
 
 Requirements
 ------------
 
 - [nodejs](http://nodejs.org)
-- [libxmljs](http://github.com/polotek/libxmljs)
+- [sax-js](http://github.com/isaacs/sax-js)
 
 Grab the code
 --------------
@@ -26,7 +26,7 @@ Usage
 
     $ node lepote.js
 
-You can put your events directly in the `plugins/` subdirectory and look at usage in the test.js example or look at the [Plugins section](http://tdebarochez.github.com/lepote/plugins/) in documentation.
+You can put your events directly in the `plugins/` subdirectory and look at usage in the test.js example.
 
 Documentation
 -------------
