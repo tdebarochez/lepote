@@ -21,6 +21,7 @@ function run (conf) {
 
 function plugins (lepote) {
   global.lepote = lepote;
+  global.xmpp = xmpp;
   var dir = 'plugins';
   var plugins = [];
   fs.readdirSync(path.join(__dirname, dir)).forEach(function(file){
