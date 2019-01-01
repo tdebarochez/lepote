@@ -1,6 +1,11 @@
 LePote
 ======
 
+Warning
+---
+
+Not maintained anymore.
+
 About
 -----
 
